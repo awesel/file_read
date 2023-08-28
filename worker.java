@@ -1,7 +1,6 @@
-package file_read;
-
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -42,11 +41,22 @@ public class worker {
 
     }
 
-    public static void main(String args[]) {
+    public static int countCharacters(String fileName) throws IOException {
+        int characterCount = 0;
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        while (br.ready()) {
+            br.read();
+            characterCount++;
+        }
+        br.close();
+        return characterCount;
+    }
+
+    public static void main(String args[]) throws IOException {
         File file = new File("read_this.txt");
         String text = readFile(file);
         System.out.println(text);
         writeFile(text);
+        System.out.println(countCharacters("read_this.txt"));
     }
-
 }
