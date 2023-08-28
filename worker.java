@@ -49,4 +49,14 @@ public class worker {
         writeFile(text);
     }
 
+    public int countCharacters(String fileName) {
+        int count = 0;
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        while (br.ready()) {
+            count++;
+        }
+        br.close();
+        return count;
+    }
+
 }
