@@ -2,6 +2,7 @@ package file_read;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,6 +48,16 @@ public class worker {
         String text = readFile(file);
         System.out.println(text);
         writeFile(text);
+    }
+
+    public int countCharacters(String fileName) throws FileNotFoundException {
+        int count = 0;
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        while (br.ready()) {
+            count++;
+        }
+        br.close();
+        return count;
     }
 
 }
